@@ -57,17 +57,17 @@
             <section data-scene="overview" data-background="assets/portland.mp4">
                 <div class="fullscreen text-center">
 
-                    <h1 class="display-4 d-flex justify-content-center">Cities in Oregon</h1>
+                    <h1 class="display-4 d-flex justify-content-center">Oregon Key Measures by County</h1>
 
 
                     <small class="d-flex justify-content-center" style="color: rgba(255,255,255,0.95)">This story map
-                        illustrates the major cities in
+                        illustrates key measures by Counties in
                         Oregon using a storytelling structure.
                     </small>
                 </div>
             </section>
-            <section data-scene="portland">
-                <h2>Portland</h2>
+            <section data-scene="totalpopulation">
+                <h2>Total Population</h2>
                 <p>Portland is a seaport and the largest city in the U.S. state of Oregon and the seat of Multnomah
                     County. It is in the Willamette Valley region of the Pacific Northwest, at the confluence of the
                     Willamette and Columbia Rivers. The city covers 145 square miles (380 square kilometers) and had an
@@ -232,7 +232,7 @@
                         storymap plugin for leaflet at <a>http://atlefren.github.io/storymap/</a>, and its functionality
                         relies on both leaflet and Boostrap.</p>
                     <p><b>storymap.js</b> | Released Date: 02/20/2017 | Version: 2.5 | MIT License </p>
-                    <p><b>Author: Bo Zhao</b> | College of Earth, Ocean, Atmospheric Science | Oregon State University
+                    <p><b>Author: Benjamin Antolin</b> | Oregon State University
                     </p>
                     <p>The context about Oregon cities was collected from Wikipedia.</p>
                     <p>The <a href="https://www.youtube.com/watch?v=UJ_vQC9PNY4">background video</a> on the front page
@@ -284,12 +284,12 @@
 
     var scenes = {
         overview: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Cover Page', layers: []},
-        portland: {lat: 45.5186089, lng: -122.7270297, zoom: 11, name: 'Portland', layers: []},
-        corvallis: {lat: 44.5701158, lng: -123.2949388, zoom: 14, name: 'Corvallis', layers: [layers.ESRI]},
-        eugene: {lat: 44.0549563, lng: -123.0958048, zoom: 13, name: 'Eugene', layers: []},
-        salem: {lat: 44.9419055, lng: -123.0356407, zoom: 13, name: 'Salem', layers: []},
-        bend: {lat: 44.0519385, lng: -121.3042125, zoom: 14, name: 'Bend', layers: [layers.counties, layers.satellite]},
-        oregon: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Oregon State', layers: [layers.GEE]},
+        totalpopulation: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Total Population', layers: [layers.counties]},
+        corvallis: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Corvallis', layers: [layers.counties]},
+        eugene: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Eugene', layers: [layers.counties]},
+        salem: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Salem', layers: [layers.counties]},
+        bend: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Bend', layers: [layers.counties]},
+        oregon: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Oregon State', layers: [layers.counties]},
         end: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'The End'}
     };
 
