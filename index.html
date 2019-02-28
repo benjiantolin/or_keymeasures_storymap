@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Cities in Oregon</title>
+    <title>Oregon by the Counties</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
+    <!--add chroma.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
 
     <!--add favicon for the web page-->
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
@@ -48,10 +50,26 @@
 
     <!--story map plugin-->
     <script src="js/storymap.2.5.js"></script>
-</head>
-<body>
 
-<div id="storymap" class="container-fluid">
+    <!--population pyramid-->
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+  <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+  </script>
+
+  <style>
+    html,
+    body,
+    #myChart {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+ <div id="storymap" class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-md-4 storymap-story">
             <section data-scene="overview" data-background="assets/portland.mp4">
@@ -250,6 +268,7 @@
 <script type="text/javascript">
 
 
+
     // Create Legend Contents in html format
     var county_legend = '<i style="background: orange; opacity: 0.5"></i><p><b>Counties</b></p>';
     var forest_legend = '<i style="background: green; opacity: 0.5"></i><p><b>Forest</b></p>';
@@ -265,7 +284,7 @@
         ESRI: {layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}')},
         counties: {
             layer: L.geoJson.ajax('assets/counties.geojson', {
-                color: 'orange',
+                color: 'blue',
                 weight: 2,
                 opacity: 0.3
             }), legend: county_legend
@@ -320,6 +339,44 @@
             return map;
         }
     });
+
+
+        var myConfig = {
+          "graphset": [{
+            "type": "pop-pyramid",
+            "options": {
+              "label-placement": "middle"
+            },
+            "plot": {
+              "stacked": true
+            },
+            "scale-x": {
+              "values": ["0-4", "5-9", "10-14", "15-19", "20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90-94", "95-99", "100 + "]
+            },
+            "scale-y": {
+              "short": true
+            },
+            "series": [{
+              "data-side": 1,
+              "background-color": "#007DF0 #0055A4",
+              "values": [1656154, 1787564, 1981671, 2108575, 2403438, 2366003, 2301402, 2519874, 3360596, 3493473, 3050775, 2759560, 2304444, 2426504, 2568938, 1785638, 1447162, 1005011, 1330870, 1130632, 1121208]
+            }, {
+              "data-side": 2,
+              "background-color": "#94090D #D40D12",
+              "values": [1656154, 1787564, 1981671, 2108575, 2403438, 2366003, 2301402, 2519874, 3360596, 3493473, 3050775, 2759560, 2304444, 2426504, 2568938, 1785638, 1447162, 1005011, 1330870, 1130632, 1121208]
+            }]
+          }]
+        };
+
+
+
+
+        zingchart.render({
+          id: 'myChart',
+          data: myConfig,
+          height: "100%",
+          width: "100%"
+        });
 </script>
 </body>
 </html>
